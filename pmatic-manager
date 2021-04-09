@@ -50,6 +50,9 @@ from __future__ import division
 from __future__ import print_function
 from __future__ import unicode_literals
 
+import debugpy
+debugpy.listen(5678)
+
 import sys
 import traceback
 import socket

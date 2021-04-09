@@ -503,7 +503,10 @@ class PageHandler(utils.LogMixin):
     def _new_transid(self):
         """Calculates a new random transaction id, adds it to the transaction id store and
         returns it to the caller."""
-        transid = uuid.uuid4().get_hex().lower()[:6]
+        try:
+    	    transid = uuid.uuid4().get_hex().lower()[:6]
+        except:
+            transid = uuid.uuid4().hex.lower()[:6]
         self._transids[transid] = (time.time(), self._request_url())
         return transid
 
