@@ -384,11 +384,10 @@ class Html(object):
 
 class FieldStorage(cgi.FieldStorage):
     def getvalue(self, key, default=None):
-        value = cgi.FieldStorage.getvalue(self, key.encode("utf-8"), default)
-        if value is not None:
-            return value.decode("utf-8")
+        if key in self:
+            return self[key].value
         else:
-            return None
+            return default  # utf8 ?
 
 
 
