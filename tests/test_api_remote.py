@@ -310,7 +310,7 @@ class TestRemoteAPILowLevel(lib.TestRemoteAPI):
 #  Liefert den Wert eines Parameters aus dem Parameterset "MASTER"
 #API.interface_get_paramset(interface, address, paramsetKey)
 #  Liefert ein komplettes Parameterset
-#API.interface_get_paramset_description(interface, address, paramsetType)
+#API.interface_get_paramset_description(interface, address, paramsetKey)
 #  Liefert die Beschreibung eines Parametersets
 #API.interface_get_paramset_id(interface, address, paramsetType)
 #  Liefert die Id eines Parametersets

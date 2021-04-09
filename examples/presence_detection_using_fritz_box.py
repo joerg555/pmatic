@@ -26,7 +26,13 @@
 # in your local network.
 
 import pmatic
-ccu = pmatic.CCU(address="http://192.168.1.26", credentials=("Admin", "EPIC-SECRET-PW"))
+import ccudata
+
+ccu = pmatic.CCU(
+    address         = ccudata.address,
+    credentials     = ccudata.credentials,
+    connect_timeout = ccudata.connect_timeout,
+)
 
 # Maybe you need to configure your fritz!Box credentials to be able to fetch the
 # presence information of the configured devices.

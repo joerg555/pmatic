@@ -21,7 +21,13 @@
 import pmatic
 #pmatic.logging(pmatic.DEBUG)
 
-ccu = pmatic.CCU(address="http://192.168.1.26", credentials=("Admin", "EPIC-SECRET-PW"))
+import ccudata
+
+ccu = pmatic.CCU(
+    address         = ccudata.address,
+    credentials     = ccudata.credentials,
+    connect_timeout = ccudata.connect_timeout,
+)
 
 for device in ccu.devices.query(device_type="HM-CC-RT-DN"):
     # You can use the generic summary_state() method.

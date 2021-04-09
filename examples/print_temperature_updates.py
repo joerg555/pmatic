@@ -31,9 +31,14 @@ updates are printed nearly instantly.
 """
 
 import pmatic
+import ccudata
 
-ccu = pmatic.CCU(address="http://192.168.1.26", credentials=("Admin", "EPIC-SECRET-PW"))
-devices = ccu.devices.query(device_type=["HM-CC-TC", "HM-WDS10-TH-O", "HM-CC-RT-DN"])
+ccu = pmatic.CCU(
+    address         = ccudata.address,
+    credentials     = ccudata.credentials,
+    connect_timeout = ccudata.connect_timeout,
+)
+
 
 # This function is executed on each state change
 def print_summary_state(param):

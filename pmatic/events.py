@@ -58,6 +58,11 @@ import pmatic.api
 import pmatic.utils as utils
 from pmatic.exceptions import PMException, PMConnectionError
 
+def Decodeutf8(val):
+    if hasattr(val,"decode"):
+        return val.decode("utf-8")
+    return val
+
 
 class EventXMLRPCServer(SimpleXMLRPCServer, threading.Thread):
     """Implements SimpleXMLRPCServer executed in a separate thread"""
@@ -405,8 +410,7 @@ class EventHandler(utils.LogMixin, object):
                 devices.append({"ADDRESS": channel.address, "VERSION": channel.version})
 
         return devices
-
-
+        
     # Mit  dieser  Methode  wird  der  Logikschicht  mitgeteilt,  dass  neue  Geräte  gefunden
     # wurden.
     # Der Parameter interface_id gibt die id des Schnittstellenprozesses an, zu dem das Gerät
@@ -432,17 +436,17 @@ class EventHandler(utils.LogMixin, object):
         #specs = self._ccu.api.DeviceSpecs(self._ccu.api)
         #file("/tmp/api-devices.txt", "w").write(pprint.pformat(sorted(specs.items())))
         def normalize_spec(d):
+            dd = {}
             for key in d.keys():
-                val = d.pop(key)
+                val = d.get(key)
                 if isinstance(val, list):
                     for index, item in enumerate(val):
-                        val[index] = item.decode("utf-8")
+                        val[index] = Decodeutf8(item)
 
                 elif utils.is_byte_string(val):
-                    val = val.decode("utf-8")
+                    val = Decodeutf8(val)
 
-                new_key = key.lower().decode("utf-8")
-
+                new_key = Decodeutf8(key.lower())
                 if new_key in [ "aes_active", "roaming" ]:
                     val = val == 1
 
@@ -455,8 +459,8 @@ class EventHandler(utils.LogMixin, object):
                 elif new_key in [ "rf_address", "rx_mode" ]:
                     continue
 
-                d[new_key] = val
-            return d
+                dd[new_key] = val
+            return dd
 
         devices = {}
 

@@ -757,7 +757,7 @@ class StaticFile(PageHandler):
                 "attachment; filename=\"%s\"" % os.path.basename(path_info))
 
         self._start_response(self._http_status(200), self._http_headers)
-        return [ l for l in open(file_path, "r") ]
+        return [ l for l in open(file_path, "rb") ]
 
 
 
@@ -2610,7 +2610,8 @@ class Manager(wsgiref.simple_server.WSGIServer, utils.LogMixin):
 
     def register_signal_handlers(self):
         signal.signal(signal.SIGINT,  self.signal_handler)
-        signal.signal(signal.SIGQUIT, self.signal_handler)
+        if hasattr(signal,"SIGQUIT"):
+            signal.signal(signal.SIGQUIT, self.signal_handler)
         signal.signal(signal.SIGTERM, self.signal_handler)
 
 

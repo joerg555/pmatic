@@ -26,7 +26,13 @@
 # in your local network.
 
 import pmatic, sys
-ccu = pmatic.CCU(address="http://192.168.1.26", credentials=("Admin", "EPIC-SECRET-PW"))
+import ccudata
+
+ccu = pmatic.CCU(
+    address         = ccudata.address,
+    credentials     = ccudata.credentials,
+    connect_timeout = ccudata.connect_timeout,
+)
 
 # Now load some resident data. When executed from the manager as inline script, you
 # will automatically have the residents configured in the manager loaded. Otherwise

@@ -169,7 +169,7 @@ logger.addHandler(file_logger)
 # Set CCU address / credentials when provided by user to override the configuration
 pmatic.manager.Config.ccu_enabled = args.ccu_enabled
 pmatic.manager.Config.ccu_address = args.ccu_address
-if args.ccu_username and args.ccu_password:
+if args.ccu_username:
     pmatic.manager.Config.ccu_credentials = args.ccu_username, args.ccu_password
 
 logger.info("------------------------------------------")

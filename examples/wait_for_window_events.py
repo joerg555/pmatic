@@ -37,10 +37,12 @@ import time
 import pmatic
 #pmatic.logging(pmatic.DEBUG)
 
+import ccudata
+
 ccu = pmatic.CCU(
-    address="http://192.168.1.26",
-    credentials=("Admin", "EPIC-SECRET-PW"),
-    connect_timeout=5,
+    address         = ccudata.address,
+    credentials     = ccudata.credentials,
+    connect_timeout = ccudata.connect_timeout,
 )
 
 # Get all HM-Sec-SC (shutter contact) devices

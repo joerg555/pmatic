@@ -18,7 +18,7 @@
 # with this program; if not, write to the Free Software Foundation, Inc.,
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
-# http://www.eq-3.de/Downloads/PDFs/Dokumentation_und_Tutorials/HM_XmlRpc_V1_502__2_.pdf
+# https://www.eq-3.de/Downloads/eq3/download%20bereich/hm_web_ui_doku/HM_XmlRpc_API.pdf
 # http://www.eq-3.de/Downloads/Software/HM-CCU2-Firmware_Updates/Tutorials/hm_devices_Endkunden.pdf
 # https://sites.google.com/site/homematicplayground/api/json-rpc
 
@@ -29,22 +29,29 @@ from __future__ import print_function
 from __future__ import unicode_literals
 
 import pmatic
-
 # Uncomment to enable debug logging of pmatic messages to stderr
 # pmatic.logging(pmatic.DEBUG)
 
+import ccudata
+
 ccu = pmatic.CCU(
-    address="http://192.168.1.26",
-    credentials=("Admin", "EPIC-SECRET-PW"),
-    connect_timeout=5,
+    address         = ccudata.address,
+    credentials     = ccudata.credentials,
+    connect_timeout = ccudata.connect_timeout,
 )
 
 print("Low battery: ")
 some_low = False
 for device in ccu.devices:
+    print("  %s: %s" % (device.name, device.summary_state))
     if device.is_battery_low:
-        print("  %s" % device.name)
+        print("  %s: %s" % (device.name, device.summary_state))
         some_low = True
+    if hasattr(device,"battery_state"):
+        batt = device.battery_state.value
+        if batt <= 2.4:
+            print("  %s Batt %0.1f V : %s" % (device.name, batt, device.summary_state,))
+            some_low = True
 
 if not some_low:
     print("  All battery powered devices are fine.")

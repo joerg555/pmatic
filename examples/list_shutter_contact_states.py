@@ -22,10 +22,12 @@ import pmatic
 
 # Open up a remote connection via HTTP to the CCU and login as admin. When the connection
 # can not be established within 5 seconds it raises an exception.
+import ccudata
+
 ccu = pmatic.CCU(
-    address="http://192.168.1.26",
-    credentials=("Admin", "EPIC-SECRET-PW"),
-    connect_timeout=5,
+    address         = ccudata.address,
+    credentials     = ccudata.credentials,
+    connect_timeout = ccudata.connect_timeout,
 )
 
 line_fmt = "%-30s %s"

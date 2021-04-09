@@ -37,8 +37,13 @@ endless loop and checking open contacts in a configured interval.
 
 import time
 import pmatic
+import ccudata
 
-ccu = pmatic.CCU(address="http://192.168.1.26", credentials=("Admin", "EPIC-SECRET-PW"))
+ccu = pmatic.CCU(
+    address         = ccudata.address,
+    credentials     = ccudata.credentials,
+    connect_timeout = ccudata.connect_timeout,
+)
 
 state_file   = "/tmp/window_states"
 warn_seconds = 60 * 15 # > 15 minutes

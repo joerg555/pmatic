@@ -19,8 +19,13 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 import pmatic
+import ccudata
 
-ccu = pmatic.CCU(address="http://192.168.1.26", credentials=("Admin", "EPIC-SECRET-PW"))
+ccu = pmatic.CCU(
+    address         = ccudata.address,
+    credentials     = ccudata.credentials,
+    connect_timeout = ccudata.connect_timeout,
+)
 
 # Trigger a short button press for the first button of a HM-PBI-4-FM device
 for device in ccu.devices.query(device_name=u"Büro-Schalter"):

@@ -440,7 +440,8 @@ class RemoteAPI(AbstractAPI):
                    "system.Exec(\"cat /www/api/methods.conf\", &stdout, &stderr);\n"
                    "Write(stdout);\n"
         )
-        return response.split("\r\n")
+        resp = response.replace("\\r","")
+        return resp.split("\n");
 
 
     # is called in locked context

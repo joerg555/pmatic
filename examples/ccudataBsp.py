@@ -18,22 +18,6 @@
 # with this program; if not, write to the Free Software Foundation, Inc.,
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
-import pmatic
-#pmatic.logging(pmatic.DEBUG)
-import ccudata
-
-ccu = pmatic.CCU(
-    address         = ccudata.address,
-    credentials     = ccudata.credentials,
-    connect_timeout = ccudata.connect_timeout,
-)
-
-device = list(ccu.devices.query(device_name="Wohnzimmer"))[0]
-
-print("%s: %s, Mode: %s, Boost Duration: %s" % (device.name, device.summary_state,
-                                                device.control_mode, device.boost_duration))
-
-device.control_mode = "BOOST"
-
-print("%s: %s, Mode: %s, Boost Duration: %s" % (device.name, device.summary_state,
-                                                device.control_mode, device.boost_duration))
+address="http://192.168.91.10"
+credentials=("Admin", "")
+connect_timeout=20

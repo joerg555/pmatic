@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{eae48514-7298-4558-abc9-59c93a92004f}</ProjectGuid>
+    <ProjectHome />
+    <StartupFile>D:\1-Projekte\greve-steuerung\pmatic\examples\print_temperature_updates.py</StartupFile>
+    <SearchPath />
+    <WorkingDirectory>.</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <ProjectTypeGuids>{888888a0-9f3d-457c-b088-3a5042f75d52}</ProjectTypeGuids>
+    <LaunchProvider>Standard Python launcher</LaunchProvider>
+    <InterpreterId>Global|PythonCore|3.8</InterpreterId>
+    <IsWindowsApplication>False</IsWindowsApplication>
+    <CommandLineArguments>-c 192.168.91.10 -u Admin -g -t manager_static</CommandLineArguments>
+    <EnableNativeCodeDebugging>False</EnableNativeCodeDebugging>
+    <SuppressConfigureTestFrameworkPrompt>true</SuppressConfigureTestFrameworkPrompt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'" />
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
+  <PropertyGroup>
+    <VisualStudioVersion Condition=" '$(VisualStudioVersion)' == '' ">10.0</VisualStudioVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="doc\_static\images\configure_manager.png" />
+    <Content Include="doc\_static\images\manage_scripts.png" />
+    <Content Include="doc\_static\images\manually_execute_scripts.png" />
+    <Content Include="doc\_static\images\residents_presence.png" />
+    <Content Include="doc\_static\images\schedule_scripts.png" />
+    <Content Include="doc\_static\images\state.png" />
+    <Content Include="doc\_static\images\status.png" />
+    <Content Include="doc\_static\images\view_events.png" />
+    <Content Include="manager_static\css\font-awesome.min.css" />
+    <Content Include="manager_static\css\pmatic.css" />
+    <Content Include="manager_static\favicon.ico" />
+    <Content Include="manager_static\fonts\fontawesome-webfont.svg" />
+    <Content Include="manager_static\js\update_output.js" />
+    <Content Include="pmatic-manager" />
+    <Content Include="pytest.ini" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="doc\conf.py" />
+    <Compile Include="examples\compute_dew_point.py" />
+    <Compile Include="examples\compute_sun_position.py" />
+    <Compile Include="examples\get_thermostat_valve_state.py" />
+    <Compile Include="examples\list_available_methods.py" />
+    <Compile Include="examples\ccudata.py" />
+    <Compile Include="examples\list_devices_with_low_battery.py" />
+    <Compile Include="examples\list_resident_details.py" />
+    <Compile Include="examples\list_rooms.py" />
+    <Compile Include="examples\list_room_states.py" />
+    <Compile Include="examples\list_shutter_contact_states.py" />
+    <Compile Include="examples\list_thermostats.py" />
+    <Compile Include="examples\lowlevel_api\get_all_sys_vars.py" />
+    <Compile Include="examples\lowlevel_api\get_sys_var.py" />
+    <Compile Include="examples\lowlevel_api\list_rooms.py" />
+    <Compile Include="examples\lowlevel_api\list_shutter_contact_states.py" />
+    <Compile Include="examples\lowlevel_api\print_available_api_methods.py" />
+    <Compile Include="examples\presence_detection_using_fritz_box.py" />
+    <Compile Include="examples\press_button.py" />
+    <Compile Include="examples\print_temperature_updates.py" />
+    <Compile Include="examples\send_pushover_for_low_battery_devices.py" />
+    <Compile Include="examples\set_thermostat_boost_mode.py" />
+    <Compile Include="examples\set_thermostat_to_manual_temperature.py" />
+    <Compile Include="examples\switch_off_all_lamps.py" />
+    <Compile Include="examples\switch_on_single_power_switch.py" />
+    <Compile Include="examples\wait_for_window_events.py" />
+    <Compile Include="examples\warn_about_too_long_open_windows.py" />
+    <Compile Include="pmatic\api.py" />
+    <Compile Include="pmatic\ccu.py" />
+    <Compile Include="pmatic\entities.py" />
+    <Compile Include="pmatic\events.py" />
+    <Compile Include="pmatic\exceptions.py" />
+    <Compile Include="pmatic\manager.py" />
+    <Compile Include="pmatic\notify.py" />
+    <Compile Include="pmatic\params.py" />
+    <Compile Include="pmatic\residents.py" />
+    <Compile Include="pmatic\utils.py" />
+    <Compile Include="pmatic\__init__.py" />
+    <Compile Include="setup.py" />
+    <Compile Include="tests\lib.py" />
+    <Compile Include="tests\TestAPI.py" />
+    <Compile Include="tests\test_api.py" />
+    <Compile Include="tests\test_api_remote.py" />
+    <Compile Include="tests\test_ccu.py" />
+    <Compile Include="tests\test_entities.py" />
+    <Compile Include="tests\test_entities_rooms.py" />
+    <Compile Include="tests\test_events.py" />
+    <Compile Include="tests\test_examples.py" />
+    <Compile Include="tests\test_imports.py" />
+    <Compile Include="tests\test_manager.py" />
+    <Compile Include="tests\test_notify.py" />
+    <Compile Include="tests\test_params.py" />
+    <Compile Include="tests\test_pmatic.py" />
+    <Compile Include="tests\test_residents.py" />
+    <Compile Include="tests\test_utils.py" />
+    <Compile Include="update-file-headers.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="doc" />
+    <Folder Include="doc\_static\" />
+    <Folder Include="doc\_static\images" />
+    <Folder Include="examples" />
+    <Folder Include="examples\lowlevel_api" />
+    <Folder Include="manager_static" />
+    <Folder Include="manager_static\css" />
+    <Folder Include="manager_static\fonts" />
+    <Folder Include="manager_static\js" />
+    <Folder Include="pmatic" />
+    <Folder Include="tests" />
+  </ItemGroup>
+  <ItemGroup>
+    <InterpreterReference Include="Global|PythonCore|3.8" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
+</Project>
