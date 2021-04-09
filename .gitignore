@@ -17,3 +17,4 @@ dist/ccu
 playground.py
 .idea
 /examples/ccudata.py
+/env

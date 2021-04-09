@@ -5,15 +5,15 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{eae48514-7298-4558-abc9-59c93a92004f}</ProjectGuid>
     <ProjectHome />
-    <StartupFile>D:\1-Projekte\greve-steuerung\pmatic\examples\print_temperature_updates.py</StartupFile>
+    <StartupFile>D:\1-Projekte\greve-steuerung\pmatic\pmatic-manager</StartupFile>
     <SearchPath />
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
     <ProjectTypeGuids>{888888a0-9f3d-457c-b088-3a5042f75d52}</ProjectTypeGuids>
     <LaunchProvider>Standard Python launcher</LaunchProvider>
-    <InterpreterId>Global|PythonCore|3.8</InterpreterId>
+    <InterpreterId>Global|PythonCore|3.7-32</InterpreterId>
     <IsWindowsApplication>False</IsWindowsApplication>
-    <CommandLineArguments>-c 192.168.91.10 -u Admin -g -t manager_static</CommandLineArguments>
+    <CommandLineArguments> -g -t manager_static</CommandLineArguments>
     <EnableNativeCodeDebugging>False</EnableNativeCodeDebugging>
     <SuppressConfigureTestFrameworkPrompt>true</SuppressConfigureTestFrameworkPrompt>
   </PropertyGroup>
@@ -44,6 +44,7 @@
     <Compile Include="examples\compute_dew_point.py" />
     <Compile Include="examples\compute_sun_position.py" />
     <Compile Include="examples\get_thermostat_valve_state.py" />
+    <Compile Include="examples\jsm_test_updates.py" />
     <Compile Include="examples\list_available_methods.py" />
     <Compile Include="examples\ccudata.py" />
     <Compile Include="examples\list_devices_with_low_battery.py" />
@@ -111,6 +112,7 @@
     <Folder Include="tests" />
   </ItemGroup>
   <ItemGroup>
+    <InterpreterReference Include="Global|PythonCore|3.7-32" />
     <InterpreterReference Include="Global|PythonCore|3.8" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
