@@ -93,6 +93,11 @@ from pmatic.residents import Residents, Resident, PersonalDevice, PersonalDevice
 # Set while a script is executed with the "/run" page
 g_runner = None
 
+def Encodeutf8(val):
+    if hasattr(val,"encode"):
+        return val.encode("utf-8")
+    return val
+
 class Config(utils.LogMixin):
     config_path = "/etc/config/addons/pmatic/etc"
     state_path  = "/var/lib/pmatic" # not reboot persistent!
@@ -558,8 +563,8 @@ class PageHandler(utils.LogMixin):
 
     def _set_cookie(self, name, value):
         cookie = SimpleCookie()
-        cookie[name.encode("utf-8")] = value.encode("utf-8")
-        self._set_http_header("Set-Cookie", cookie[name.encode("utf-8")].OutputString())
+        cookie[name] = value
+        self._set_http_header("Set-Cookie", cookie[name].OutputString())
 
 
     @property
@@ -1071,7 +1076,7 @@ class PageLogin(HtmlPageHandler, utils.LogMixin):
 
 
     def action(self):
-        password = self._vars.getvalue("password")
+        password = Encodeutf8(self._vars.getvalue("password"))
 
         if not password:
             raise PMUserError("Invalid password.")
@@ -1089,7 +1094,7 @@ class PageLogin(HtmlPageHandler, utils.LogMixin):
 
     def _login(self, secret):
         salt = "%d" % int(time.time())
-        salted_hash = sha256(secret + salt).hexdigest()
+        salted_hash = sha256(Encodeutf8(secret + salt)).hexdigest()
         cookie_value = salt + ":" + salted_hash
         self._set_cookie("pmatic_auth", cookie_value)
 
@@ -1421,7 +1426,7 @@ class PageConfiguration(HtmlPageHandler, utils.LogMixin):
 
 
     def _handle_set_password(self):
-        password = self._vars.getvalue("password")
+        password = self._vars.getvalue("password").encode("utf8")
 
         if not password:
             raise PMUserError("You need to provide a password and it must not be empty.")
