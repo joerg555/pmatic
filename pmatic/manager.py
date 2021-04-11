@@ -871,7 +871,7 @@ class PageMain(HtmlPageHandler, utils.LogMixin):
             os.makedirs(Config.script_path)
 
         filepath = os.path.join(Config.script_path, filename)
-        open(filepath, "w").write(script)
+        open(filepath, "wb").write(script)
         os.chmod(filepath, 0o755)
 
 
@@ -947,10 +947,13 @@ class PageMain(HtmlPageHandler, utils.LogMixin):
         self.write("<table><tr>\n")
         self.write("<th>Actions</th>"
                    "<th class=\"largest\">Filename</th>"
-                   "<th>Last modified</th></tr>\n")
+                   "<th>Last modified</th>"
+                   "<th>Size</th>"
+                   "</tr>\n")
         for filename in self._manager.get_scripts():
             path = os.path.join(Config.script_path, filename)
-            last_mod_ts = os.stat(path).st_mtime
+            st = os.stat(path)
+            last_mod_ts = st.st_mtime
 
             self.write("<tr>")
             self.write("<td>")
@@ -964,6 +967,7 @@ class PageMain(HtmlPageHandler, utils.LogMixin):
             self.write("<td>%s</td>" % self.escape(filename))
             self.write("<td>%s</td>" % time.strftime("%Y-%m-%d %H:%M:%S",
                                                      utils.localtime(last_mod_ts, Config.timezone)))
+            self.write("<td>%u</td>" % st.st_size)
             self.write("</tr>")
         self.write("</table>\n")
         self.write("</div>\n")
