@@ -64,7 +64,7 @@ def test_requirements():
 
 
 setup(name='pmatic',
-    version='0.6',
+    version='0.7',
     description='Python API for Homematic. Easy to use.',
     maintainer='Lars Michelsen',
     maintainer_email='lm@larsmichelsen.com',
@@ -91,6 +91,8 @@ setup(name='pmatic',
         'Programming Language :: Python :: 3.3',
         'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
+	'Programming Language :: Python :: 3.6',
+	'Programming Language :: Python :: 3.7'
         'Topic :: Software Development :: Embedded Systems',
         'Topic :: Software Development :: Libraries :: Python Modules',
     ],
@@ -103,5 +105,6 @@ setup(name='pmatic',
     install_requires=[
         "requests",
         "simpleTR64",
+        "pytz",
     ],
 )

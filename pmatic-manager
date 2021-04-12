@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # encoding: utf-8
 #
 # pmatic - Python API for Homematic. Easy to use.
@@ -50,8 +50,8 @@ from __future__ import division
 from __future__ import print_function
 from __future__ import unicode_literals
 
-import debugpy
-debugpy.listen(5678)
+#import debugpy
+#debugpy.listen(5678)
 
 import sys
 import traceback
