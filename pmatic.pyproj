@@ -11,7 +11,7 @@
     <OutputPath>.</OutputPath>
     <ProjectTypeGuids>{888888a0-9f3d-457c-b088-3a5042f75d52}</ProjectTypeGuids>
     <LaunchProvider>Standard Python launcher</LaunchProvider>
-    <InterpreterId>Global|PythonCore|3.9-32</InterpreterId>
+    <InterpreterId>Global|PythonCore|3.9</InterpreterId>
     <IsWindowsApplication>False</IsWindowsApplication>
     <CommandLineArguments> -g -t manager_static -o D:\etc\addons\pmatic\etc</CommandLineArguments>
     <EnableNativeCodeDebugging>False</EnableNativeCodeDebugging>
@@ -113,8 +113,7 @@
   </ItemGroup>
   <ItemGroup>
     <InterpreterReference Include="Global|PythonCore|2.7-32" />
-    <InterpreterReference Include="Global|PythonCore|3.7-32" />
-    <InterpreterReference Include="Global|PythonCore|3.9-32" />
+    <InterpreterReference Include="Global|PythonCore|3.9" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
 </Project>

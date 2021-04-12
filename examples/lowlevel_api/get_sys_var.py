@@ -29,4 +29,4 @@ api = pmatic.api.init(
     address="http://192.168.1.26",
     credentials=("Admin", "EPIC-SECRET-PW"))
 
-print api.sys_var_get_value_by_name(name="Anwesenheit")
+print (api.sys_var_get_value_by_name(name="Anwesenheit"))

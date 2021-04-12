@@ -563,7 +563,7 @@ class PageHandler(utils.LogMixin):
 
     def _set_cookie(self, name, value):
         cookie = SimpleCookie()
-        cookie[name] = value
+        cookie[str(name)] = str(value)
         self._set_http_header("Set-Cookie", cookie[name].OutputString())
 
 
@@ -2676,9 +2676,9 @@ class EventManager(threading.Thread, utils.LogMixin):
                     self._do_register_for_ccu_events()
                 except Exception as e:
                     self._fail_exc = e
-                    self.logger.error("Error in EventManager (%s). Restarting in 10 seconds.", e)
+                    self.logger.error("Error in EventManager (%s). Restarting in 20 seconds.", e)
                     self.logger.debug("Exception:", exc_info=True)
-                    time.sleep(10)
+                    time.sleep(20)
             else:
                 self._terminate.wait()
 
