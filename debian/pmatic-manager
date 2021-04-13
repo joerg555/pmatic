@@ -33,7 +33,8 @@ start)	log_daemon_msg "Starting" "pmatic-manager"
         log_end_msg $?
 	;;
 stop)	log_daemon_msg "Stopping" "pmatic-manager"
-        killproc -p $PIDFILE $DAEMON
+        kill `cat $PIDFILE`
+        #killproc -p $PIDFILE
         RETVAL=$?
         [ $RETVAL -eq 0 ] && [ -e "$PIDFILE" ] && rm -f $PIDFILE
         log_end_msg $RETVAL
